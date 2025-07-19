@@ -2,8 +2,6 @@
 
 A modern twist on the classic Snakes & Ladders game featuring intelligent AI with strategic rope placement mechanics.
 
-## 🌟 Features
-
 ### 🎯 **Game Mechanics**
 - **Interactive GUI** with modern pygame interface
 - **Strategic rope placement** - players can place ropes to push opponents back
@@ -28,7 +26,7 @@ A modern twist on the classic Snakes & Ladders game featuring intelligent AI wit
 - pygame library
 
 ### Installation
-```bash
+```
 # Clone the repository
 git clone https://github.com/yourusername/SnakesAndLadders2.git
 cd SnakesAndLadders2
@@ -54,8 +52,8 @@ Be the first player to reach the prize (⭐) at the top of the board!
 - 🔵 **Player 1** (Blue) - Human player
 - 🔴 **Player 2** (Red) - AI opponent  
 - ⭐ **Prize** - Goal position at the top
-- 🪜 **Ladders** - Climb up when stepped on
-- 🪢 **Ropes** - Push opponents back when triggered
+- 🆙 **Ladders** - Climb up when stepped on
+- 🎗️ **Ropes** - Push opponents back when triggered
 - 🧱 **Walls** - Blocked positions
 
 ## 🧠 AI Strategy
@@ -63,9 +61,9 @@ Be the first player to reach the prize (⭐) at the top of the board!
 The AI uses a sophisticated strategy system:
 
 ### **Game Phase Awareness**
-- **Early Game (Turns 1-8)**: Focuses on movement, conserves ropes
-- **Mid Game (Turns 8-16)**: Moderate rope usage, strategic positioning
-- **Late Game (Turns 16+)**: Aggressive rope placement when threatened
+- **Early Game**: Focuses on movement, conserves ropes
+- **Mid Game**: Moderate rope usage, strategic positioning
+- **Late Game**: Aggressive rope placement when threatened
 
 ### **Smart Rope Placement**
 - **Optimal Distance**: Places ropes 2-4 cells from opponent normally
@@ -109,10 +107,6 @@ SnakesAndLadders2/
 - **Pruning Efficiency**: 50+ branches pruned per search
 - **Memory Usage**: Optimized with transposition tables
 
-## 🎨 Screenshots
-
-*[Add screenshots of your game here]*
-
 ## 🤝 Contributing
 
 Feel free to contribute improvements:
@@ -133,7 +127,5 @@ This project is open source and available under the [MIT License](LICENSE).
 - Inspired by classic Snakes & Ladders with modern strategic elements
 
 ---
-
-**Created with ❤️ by [Your Name]**
 
 *Enjoy strategic gameplay with intelligent AI!* 🎮🤖 

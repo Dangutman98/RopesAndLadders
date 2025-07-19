@@ -551,7 +551,7 @@ class SnakesLaddersGUI:
                             button_color = Colors.GRAY
                         
                         rope_button = self.create_button(x, y, button_width, button_height - 5, 
-                                                       f"{button_text} ({len(actions)})", 
+                                                       button_text, 
                                                        f"rope_{direction}", button_color)
                         rope_button['is_action_button'] = True
                         rope_button['rope_actions'] = actions

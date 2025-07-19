@@ -6,7 +6,7 @@ from typing import List, Tuple, Optional, Dict
 from enum import Enum
 
 # Import our existing game logic and new AI system
-from snakes_ladders_game import GameState, Player, ActionType, OptimizedMinimaxAgent, Direction, GamePhase
+from ropes_ladders_game import GameState, Player, ActionType, OptimizedMinimaxAgent, Direction, GamePhase
 from minimax_pruning import MinimaxPruning
 
 # Initialize Pygame
@@ -49,7 +49,7 @@ class GameMode(Enum):
     SETTINGS = "settings"
     GAME_OVER = "game_over"
 
-class SnakesLaddersGUI:
+class RopesLaddersGUI:
     def __init__(self):
         # Screen settings
         self.SCREEN_WIDTH = 1200
@@ -60,7 +60,7 @@ class SnakesLaddersGUI:
         self.BOARD_OFFSET_Y = 50
         
         # Game state
-        self.game_state = GameState(self.BOARD_SIZE, max_ropes=3)
+        self.game_state = GameState(self.BOARD_SIZE, max_ropes=3, verbose=False)
         self.game_mode = GameMode.MENU
         self.selected_cell = None
         self.possible_moves = []
@@ -70,7 +70,7 @@ class SnakesLaddersGUI:
         self.current_segment = []
         
         # AI - Use new MinimaxPruning system for enhanced strategic play
-        self.ai_agent = MinimaxPruning()
+        self.ai_agent = MinimaxPruning(verbose=False)
         self.ai_thinking = False
         self.ai_start_time = 0
         self.ai_vs_ai_mode = False
@@ -93,7 +93,7 @@ class SnakesLaddersGUI:
         
         # Initialize screen
         self.screen = pygame.display.set_mode((self.SCREEN_WIDTH, self.SCREEN_HEIGHT))
-        pygame.display.set_caption("🐍 Snakes & Ladders - Strategic Edition")
+        pygame.display.set_caption("Ropes & Ladders - Strategic Edition")
         
         # Disable debug output during AI simulation
         self.debug_output = True
@@ -125,7 +125,7 @@ class SnakesLaddersGUI:
         self.screen.fill(Colors.WHITE)
         
         # Title
-        title_text = self.title_font.render("Snakes & Ladders", True, Colors.DARK_GRAY)
+        title_text = self.title_font.render("Ropes & Ladders", True, Colors.DARK_GRAY)
         subtitle_text = self.font.render("Strategic Edition with AI", True, Colors.GRAY)
         
         title_rect = title_text.get_rect(center=(self.SCREEN_WIDTH // 2, 150))
@@ -700,7 +700,7 @@ class SnakesLaddersGUI:
     
     def start_new_game(self):
         """Start a new game"""
-        self.game_state = GameState(self.BOARD_SIZE, max_ropes=3)
+        self.game_state = GameState(self.BOARD_SIZE, max_ropes=3, verbose=False)
         self.possible_moves = self.game_state.get_possible_actions()
         self.game_mode = GameMode.GAME
         self.cell_size = self.CELL_SIZE
@@ -953,5 +953,5 @@ class SnakesLaddersGUI:
 
 
 if __name__ == "__main__":
-    game = SnakesLaddersGUI()
+    game = RopesLaddersGUI()
     game.run() 

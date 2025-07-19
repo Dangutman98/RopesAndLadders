@@ -31,9 +31,10 @@ class Direction(Enum):
 class GameState:
     """Represents the complete state of the game at any point"""
     
-    def __init__(self, board_size: int = 11, max_ropes: int = 3):
+    def __init__(self, board_size: int = 11, max_ropes: int = 3, verbose: bool = True):
         self.board_size = board_size
         self.max_ropes = max_ropes
+        self.verbose = verbose
         
         # Initialize player positions
         self.player1_pos = (board_size - 1, board_size // 2)  # Bottom-center
@@ -61,13 +62,14 @@ class GameState:
         self.turn_count = 0
         self.game_phase = GamePhase.PLAYING
         
-        print(f"Game initialized:")
-        print(f"   Board size: {board_size}x{board_size}")
-        print(f"   Player 1 starts at: {self.player1_pos}")
-        print(f"   Player 2 starts at: {self.player2_pos}")
-        print(f"   Prize location: {self.prize_pos}")
-        print(f"   Each player has {max_ropes} rope obstacles to place during the game")
-        print(f"   Game starts immediately - no setup phase!")
+        if self.verbose:
+            print(f"Game initialized:")
+            print(f"   Board size: {board_size}x{board_size}")
+            print(f"   Player 1 starts at: {self.player1_pos}")
+            print(f"   Player 2 starts at: {self.player2_pos}")
+            print(f"   Prize location: {self.prize_pos}")
+            print(f"   Each player has {max_ropes} rope obstacles to place during the game")
+            print(f"   Game starts immediately - no setup phase!")
     
     def get_state_hash(self) -> str:
         """Generate a unique hash for this game state for transposition table"""
@@ -225,7 +227,8 @@ class GameState:
                     self.player1_pos = pushed_pos
                 else:
                     self.player2_pos = pushed_pos
-                print(f"Player {self.current_player.name} stepped on opponent's rope at {position} and was pushed along the rope to {pushed_pos}")
+                if self.verbose:
+                    print(f"Player {self.current_player.name} stepped on opponent's rope at {position} and was pushed along the rope to {pushed_pos}")
                 return True, pushed_pos
         return False, position
     
@@ -241,7 +244,8 @@ class GameState:
                         self.player1_pos = end_pos
                     else:
                         self.player2_pos = end_pos
-                    print(f"Player {self.current_player.name} climbed ladder from {start_pos} to {end_pos}")
+                    if self.verbose:
+                        print(f"Player {self.current_player.name} climbed ladder from {start_pos} to {end_pos}")
                     
                     # Check if landing position triggers a rope
                     rope_triggered, final_pos = self.check_rope_trigger(end_pos)
@@ -283,7 +287,8 @@ class GameState:
                             new_state.player1_pos = end_pos
                         else:
                             new_state.player2_pos = end_pos
-                        print(f"Player {new_state.current_player.name} climbed ladder from {start_pos} to {end_pos}")
+                        if new_state.verbose:
+                            print(f"Player {new_state.current_player.name} climbed ladder from {start_pos} to {end_pos}")
                         
                         # Check if landing position from ladder also triggers a rope
                         rope_triggered_again, final_pos_2 = new_state.check_rope_trigger(end_pos)
@@ -327,7 +332,8 @@ class GameState:
                     new_state.player1_pos = end_pos
                 else:
                     new_state.player2_pos = end_pos
-                print(f"Player {new_state.current_player.name} climbed ladder from {start_pos} to {end_pos}")
+                if new_state.verbose:
+                    print(f"Player {new_state.current_player.name} climbed ladder from {start_pos} to {end_pos}")
                 
                 # Check if landing position from ladder triggers a rope
                 rope_triggered_from_ladder, final_pos_3 = new_state.check_rope_trigger(end_pos)
@@ -431,8 +437,8 @@ from minimax_pruning import MinimaxPruning
 class OptimizedMinimaxAgent:
     """Wrapper for backward compatibility - uses new MinimaxPruning system"""
     
-    def __init__(self, max_depth: int = 5, time_limit: float = 3.0):
-        self.ai = MinimaxPruning(max_depth=max_depth, time_limit=time_limit)
+    def __init__(self, max_depth: int = 5, time_limit: float = 3.0, verbose: bool = True):
+        self.ai = MinimaxPruning(max_depth=max_depth, time_limit=time_limit, verbose=verbose)
         self.max_depth = max_depth
         self.time_limit = time_limit
         

@@ -7,19 +7,21 @@ from enum import Enum
 class MinimaxPruning:
     """
     Advanced AI decision-making system using Minimax with Alpha-Beta pruning
-    Specifically designed for strategic Snakes & Ladders gameplay
+    Specifically designed for strategic Ropes & Ladders gameplay
     """
     
-    def __init__(self, max_depth: int = 5, time_limit: float = 3.0):
+    def __init__(self, max_depth: int = 5, time_limit: float = 3.0, verbose: bool = True):
         """
         Initialize the AI system
         
         Args:
             max_depth: Maximum search depth for minimax algorithm
             time_limit: Maximum time allowed for thinking (seconds)
+            verbose: Whether to print detailed analysis messages
         """
         self.max_depth = max_depth
         self.time_limit = time_limit
+        self.verbose = verbose
         self.nodes_evaluated = 0
         self.pruning_count = 0
         self.transposition_table = {}
@@ -145,7 +147,8 @@ class MinimaxPruning:
         self.nodes_evaluated = 0
         self.pruning_count = 0
         
-        print(f"🤖 AI {state.current_player.name} analyzing board...")
+        if self.verbose:
+            print(f"🤖 AI {state.current_player.name} analyzing board...")
         
         if use_iterative_deepening:
             best_action = self._iterative_deepening_search(state)
@@ -155,10 +158,11 @@ class MinimaxPruning:
         
         search_time = time.time() - self.start_time
         
-        print(f"   📊 Analysis complete: {self.nodes_evaluated} nodes evaluated")
-        print(f"   ✂️ Pruning efficiency: {self.pruning_count} branches pruned")
-        print(f"   ⏱️ Search time: {search_time:.2f}s")
-        print(f"   🧠 Cache entries: {len(self.transposition_table)}")
+        if self.verbose:
+            print(f"   📊 Analysis complete: {self.nodes_evaluated} nodes evaluated")
+            print(f"   ✂️ Pruning efficiency: {self.pruning_count} branches pruned")
+            print(f"   ⏱️ Search time: {search_time:.2f}s")
+            print(f"   🧠 Cache entries: {len(self.transposition_table)}")
         
         # Update position history for the current player
         if best_action and best_action['type'].value == 'move':
@@ -168,7 +172,7 @@ class MinimaxPruning:
             
             # Log oscillation prevention info
             oscillation_penalty = self.get_oscillation_penalty(state.current_player, new_pos)
-            if oscillation_penalty > 0:
+            if oscillation_penalty > 0 and self.verbose:
                 print(f"   🚫 Oscillation penalty applied: {oscillation_penalty:.1f}")
         
         return best_action if best_action else state.get_possible_actions()[0]
@@ -189,7 +193,8 @@ class MinimaxPruning:
                 if action:
                     best_action = action
                     
-                print(f"   🔍 Depth {depth} completed in {time.time() - self.start_time:.2f}s")
+                if self.verbose:
+                    print(f"   🔍 Depth {depth} completed in {time.time() - self.start_time:.2f}s")
                 
             except Exception as e:
                 print(f"   ⚠️ Depth {depth} interrupted: {e}")
@@ -477,7 +482,7 @@ class MinimaxPruning:
         """Order actions for better alpha-beta pruning"""
         def action_priority(action):
             # Import ActionType locally to avoid circular imports
-            from snakes_ladders_game import ActionType
+            from ropes_ladders_game import ActionType
             
             if action['type'] == ActionType.MOVE:
                 # Prioritize moves that get closer to prize

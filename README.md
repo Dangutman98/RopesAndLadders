@@ -1,6 +1,6 @@
-# 🎮 Snakes & Ladders with Smart AI
+# 🎮 Ropes & Ladders with Smart AI
 
-A modern twist on the classic Snakes & Ladders game featuring intelligent AI with strategic rope placement mechanics.
+A modern twist on the classic Ropes & Ladders game featuring intelligent AI with strategic rope placement mechanics.
 
 ### 🎯 **Game Mechanics**
 - **Interactive GUI** with modern pygame interface
@@ -28,14 +28,14 @@ A modern twist on the classic Snakes & Ladders game featuring intelligent AI wit
 ### Installation
 ```
 # Clone the repository
-git clone https://github.com/yourusername/SnakesAndLadders2.git
-cd SnakesAndLadders2
+git clone https://github.com/yourusername/RopesAndLadders.git
+cd RopesAndLadders
 
 # Install dependencies
 pip install pygame
 
 # Run the game
-python snakes_ladders_gui.py
+python ropes_ladders_gui.py
 ```
 
 ## 🎯 How to Play
@@ -80,9 +80,9 @@ The AI uses a sophisticated strategy system:
 ## 📁 Project Structure
 
 ```
-SnakesAndLadders2/
-├── snakes_ladders_gui.py      # Main GUI application
-├── snakes_ladders_game.py     # Core game logic and AI wrapper
+RopesAndLadders2/
+├── ropes_ladders_gui.py      # Main GUI application
+├── ropes_ladders_game.py     # Core game logic and AI wrapper
 ├── minimax_pruning.py         # Advanced AI implementation
 ├── README.md                  # This file
 └── .gitignore                 # Git ignore rules
@@ -94,7 +94,7 @@ SnakesAndLadders2/
 - **`GameState`**: Manages board state, player positions, and game rules
 - **`MinimaxPruning`**: Advanced AI with strategic decision making
 - **`OptimizedMinimaxAgent`**: Wrapper for backward compatibility
-- **`SnakesLaddersGUI`**: Pygame-based graphical interface
+- **`RopesLaddersGUI`**: Pygame-based graphical interface
 
 ### **AI Configuration**
 - **Search Depth**: 5 levels (configurable)
@@ -124,7 +124,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 - Built with **Python** and **pygame**
 - AI implementation uses **Minimax algorithm** with **Alpha-Beta pruning**
-- Inspired by classic Snakes & Ladders with modern strategic elements
+- Inspired by classic ropes & Ladders with modern strategic elements
 
 ---
 

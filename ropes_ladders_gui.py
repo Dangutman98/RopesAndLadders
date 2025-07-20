@@ -70,7 +70,7 @@ class RopesLaddersGUI:
         self.current_segment = []
         
         # AI - Use new MinimaxPruning system for enhanced strategic play
-        self.ai_agent = MinimaxPruning(verbose=False)
+        self.ai_agent = MinimaxPruning(verbose=True)
         self.ai_thinking = False
         self.ai_start_time = 0
         self.ai_vs_ai_mode = False

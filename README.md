@@ -107,18 +107,6 @@ RopesAndLadders2/
 - **Pruning Efficiency**: 50+ branches pruned per search
 - **Memory Usage**: Optimized with transposition tables
 
-## 🤝 Contributing
-
-Feel free to contribute improvements:
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
 
 ## 🙏 Acknowledgments
 
@@ -126,6 +114,17 @@ This project is open source and available under the [MIT License](LICENSE).
 - AI implementation uses **Minimax algorithm** with **Alpha-Beta pruning**
 - Inspired by classic ropes & Ladders with modern strategic elements
 
+## 🔗 Links
+
+### **YouTube Videos of The Project**
+- Presentation - https://www.youtube.com/watch?v=-ZAQ_IMgv_E&ab_channel=DanGutman
+- Gameplay - https://www.youtube.com/watch?v=2TRb9SFhPsM&t=208s&ab_channel=DanGutman
+
+## 📄 Documentation
+
+### **SRS Document**
+- https://github.com/Dangutman98/RopesAndLadders/blob/main/SRS.doc
+  
 ---
 
 *Enjoy strategic gameplay with intelligent AI!* 🎮🤖 
